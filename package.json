@@ -7,9 +7,13 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "firebase": "^9.0.2",
+    "node-sass": "^4.14.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "rsuite": "^4.10.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -39,5 +43,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.4.0",
+    "rimraf": "^3.0.2"
   }
 }
