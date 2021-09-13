@@ -7,9 +7,11 @@ import PublicRoute from './Components/PublicRoute';
 import Home from './Pages/Home';
 import Signin from './Pages/Signin';
 import './styles/main.scss';
+import { ProfileProvider } from './context/profile.context';
 
 function App() {
   return (
+    <ProfileProvider>
     <Switch>
       <PublicRoute path="/signin">
         <Signin />{' '}
@@ -18,6 +20,7 @@ function App() {
         <Home />
       </PrivateRoute>
     </Switch>
+    </ProfileProvider>
   );
 }
 
