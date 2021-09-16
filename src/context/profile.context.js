@@ -2,40 +2,46 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 import { auth, database } from '../misc/firebase';
 
 const ProfileContext = createContext();
-export const ProfileProvider = ({ children }) => {
-  // eslint-disable-next-line no-unused-vars
-  const [profile, setProfiles] = useState(null);
-  const [isLoading, setisLoading] = useState(true);
-  useEffect(() => {
-    let useRef;
-    const authunsub = auth.onAuthStateChanged(authobj => {
-      if (authobj) {
-        useRef = database.ref(`/profiles/${authobj.uid}`);
 
-        useRef.on('value', snap => {
-          const { name, createdAt } = snap.val();
+export const ProfileProvider = ({ children }) => {
+  const [profile, setProfile] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    let userRef;
+
+    const authUnsub = auth.onAuthStateChanged(authObj => {
+      if (authObj) {
+        userRef = database.ref(`/profiles/${authObj.uid}`);
+        userRef.on('value', snap => {
+          const { name, createdAt, avatar } = snap.val();
+
           const data = {
             name,
             createdAt,
-            uid: authobj.uid,
-            email: authobj.email,
+            avatar,
+            uid: authObj.uid,
+            email: authObj.email,
           };
-          setProfiles(data);
-          setisLoading(false);
+
+          setProfile(data);
+          setIsLoading(false);
         });
       } else {
-        if (useRef) {
-          useRef.off();
+        if (userRef) {
+          userRef.off();
         }
 
-        setProfiles(null);
-        setisLoading(false);
+        setProfile(null);
+        setIsLoading(false);
       }
     });
+
     return () => {
-      authunsub();
-      if (useRef) {
-        useRef.off();
+      authUnsub();
+
+      if (userRef) {
+        userRef.off();
       }
     };
   }, []);
