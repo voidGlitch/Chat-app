@@ -1,16 +1,19 @@
 import React from 'react';
-import { Col, Grid, Row } from 'rsuite';
+import { Grid, Row, Col } from 'rsuite';
 import Sidebar from '../Components/Sidebar';
+import { RoomsProvider } from '../context/rooms.context';
 
 const Home = () => {
   return (
-    <Grid fluid className="h-100">
-      <Row>
-        <Col xs={24} md={8}>
-          <Sidebar />
-        </Col>
-      </Row>
-    </Grid>
+    <RoomsProvider>
+      <Grid fluid className="h-100">
+        <Row className="h-100">
+          <Col xs={24} md={8} className="h-100">
+            <Sidebar />
+          </Col>
+        </Row>
+      </Grid>
+    </RoomsProvider>
   );
 };
 
