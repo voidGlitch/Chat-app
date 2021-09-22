@@ -4,28 +4,35 @@ import { useProfile } from '../../context/profile.context';
 import EditableInput from '../EditibleInput';
 import { database } from '../../misc/firebase';
 import ProviderBlock from './ProviderBlock';
-import Avataruploadbtn from './Avataruploadbtn';
+import AvatarUploadBtn from './Avataruploadbtn';
+import { getUserUpdates } from '../../misc/helpers';
 
 const Dashboard = ({ onSignOut }) => {
   const { profile } = useProfile();
 
   const onSave = async newData => {
-    const userNicknameRef = database
-      .ref(`/profiles/${profile.uid}`)
-      .child('name');
     try {
-      await userNicknameRef.set(newData);
+      const updates = await getUserUpdates(
+        profile.uid,
+        'name',
+        newData,
+        database
+      );
 
-      Alert.info('Nickname has been successfully updated', 4000);
+      await database.ref().update(updates);
+
+      Alert.success('Nickname has been updated', 4000);
     } catch (err) {
       Alert.error(err.message, 4000);
     }
   };
+
   return (
     <>
       <Drawer.Header>
         <Drawer.Title>Dashboard</Drawer.Title>
       </Drawer.Header>
+
       <Drawer.Body>
         <h3>Hey, {profile.name}</h3>
         <ProviderBlock />
@@ -36,7 +43,7 @@ const Dashboard = ({ onSignOut }) => {
           onSave={onSave}
           label={<h6 className="mb-2">Nickname</h6>}
         />
-        <Avataruploadbtn />
+        <AvatarUploadBtn />
       </Drawer.Body>
 
       <Drawer.Footer>
