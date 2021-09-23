@@ -8,6 +8,7 @@ const EditibleInput = ({
   placeholder = 'Write your value',
   // eslint-disable-next-line no-unused-vars
   emptyMsg = 'input is empty',
+  WrapperClassName = '',
   ...inputprops
 }) => {
   const [input, setInput] = useState(initialValue);
@@ -35,7 +36,7 @@ const EditibleInput = ({
     setIsEditable(false);
   };
   return (
-    <div>
+    <div className={WrapperClassName}>
       {label}
       <InputGroup>
         <Input
