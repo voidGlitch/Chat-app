@@ -3,7 +3,15 @@
 # **Chat App**
 
 **A feature-rich, real-time chat application** with support for chat rooms, message reactions, social media authentication, role-based access control, file uploads, audio messages, and instant notifications.
+<p style="text-align: center;">
+  <a href="https://chat-web-app-9eb34.firebaseapp.com/signin" target="_blank" style="background-color: #1D4ED8; color: white; padding: 15px 25px; border-radius: 5px; text-decoration: none; font-size: 18px;">
+    Live Demo !
+  </a>
+</p>
 
+<p style="text-align: center; font-size: 16px; margin-top: 20px;">
+  🌟 Your next adventure is just a click away! 🌟
+</p>
 ## **Features**
 - **Real-time messaging** with Firebase Realtime Database
 - **Like messages** and engage with your chat
