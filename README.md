@@ -1,55 +1,120 @@
-# Chat app
 
-## Overview
 
-Real-time chat with rooms, message likes, social media auth, role-based permissions,
-file upload, audio messages and real-time notifications.
+# **Chat App**
 
-Stack:
+**A feature-rich, real-time chat application** with support for chat rooms, message reactions, social media authentication, role-based access control, file uploads, audio messages, and instant notifications.
 
-- React
-- Firebase (realtime database, FCM, cloud functions)
-- Styles with Sass and Rsuite
+## **Features**
+- **Real-time messaging** with Firebase Realtime Database
+- **Like messages** and engage with your chat
+- **Social media authentication** (Google and Facebook)
+- **Role-based permissions** for users
+- **File uploads** and sharing within chat
+- **Audio messages** for voice communication
+- **Instant notifications** via Firebase Cloud Messaging (FCM)
+  
+## **Tech Stack**
+- **Frontend**: React
+- **Backend**: Firebase (Realtime Database, Cloud Functions)
+- **Push Notifications**: Firebase Cloud Messaging (FCM)
+- **Styles**: SASS, RSuite (React Suite)
 
-## Develop and run locally
+---
 
-### Pull and install
+## **Getting Started**
 
-1. Clone this repo by running `git clone https://github.com/voidGlitch/Chat-app.git`
-2. Install dependencies for both cloud functions and React frontend by running `npm install && cd functions && npm install`
+### **1. Clone the repository**
 
-### Important
+```bash
+git clone https://github.com/voidGlitch/Chat-app.git
+```
 
-Developed using Node v10. However, if you have one of the latest Node
-versions, you can easily have dependecy-related errors (when running npm run start),
-for example with `node-sass`. Feel free to update conflict packages to versions with no conflicts.
+### **2. Install dependencies**
+Navigate to the project directory and install dependencies for both the React frontend and Firebase Cloud Functions:
 
-The reason for developing with Node v10 is to deploy cloud functions without any
-error. Engine.node is set to 10 inside `functions/package.json`. When deploying
-functions with different version other than 10, version conflict will pop-up.
+```bash
+npm install && cd functions && npm install
+```
 
-Ideally, you should have `Node Version Manager` installed to easily switch between
-different NodeJS versions.
+### **Development Setup**
+#### **Node Version Management**
+This project uses Node v10 to avoid deployment issues with Firebase Cloud Functions. For an optimal development experience, we recommend using Node Version Manager (NVM) to switch between Node versions easily.
 
-### Run frontend locally
+### **Running the Frontend Locally**
+- **Firebase configuration**: Replace the placeholder Firebase configuration inside `src/misc/firebase.js` with your own Firebase project details.
+  
+- **FCM VAPID Key**: Obtain your VAPID key from the Firebase Console:
 
-1. Inside `src/misc/firebase.js` replace config with your firebase project config.
-2. Get FCM vapid key for real-time notificaitons from `Firebase dashboard > Cog icon > Project Settings > Cloud Messaging > Web push certificates > Key pair`
-   and put it as `fcmVapidKey` inside `src/misc/firebase.js`.
-3. Run `npm run start` and develop :)
+  ```text
+  Go to Firebase Dashboard > Project Settings > Cloud Messaging > Web Push Certificates > Key Pair.
+  Place it as `fcmVapidKey` in `src/misc/firebase.js`.
+  ```
 
-If you have problems with `node-sass`, just update the package to other version.
+- **Start the development server**:
 
-### Run functions locally
+  ```bash
+  npm run start
+  ```
 
-1. Download a service account from `Firebase dashboard > Cog icon > Project Settings > Service accounts > Generate new private key`.
-2. Put the file as `functions/service-account.json`
-3. Run `npm run start` from `functions`
+- **Note**: If you encounter issues with `node-sass`, update it to a compatible version to resolve conflicts.
 
-## Deployment
+### **Running Cloud Functions Locally**
+- **Service Account Setup**: Download the service account key from:
 
-1. Install firebase-cli by running `npm install -g firebase-tools`
-2. Run `firebase deploy`
+  ```text
+  Firebase Dashboard > Project Settings > Service Accounts > Generate new private key.
+  Save it as `functions/service-account.json`.
+  ```
 
-## This project is Deployed at https://chat-web-app-9eb34.web.app/
+- **Run functions**:
 
+  ```bash
+  npm run start
+  ```
+
+### **Deployment**
+#### **Firebase Hosting and Cloud Functions**
+To deploy the project to Firebase:
+
+- Install Firebase CLI:
+
+  ```bash
+  npm install -g firebase-tools
+  ```
+
+- Deploy to Firebase:
+
+  ```bash
+  firebase deploy
+  ```
+
+- The project is live at `chat-web-app-9eb34.web.app`.
+
+---
+
+## **Project Structure**
+The project consists of the following key dependencies:
+
+- **React**: v18.3.1
+- **Firebase**: v10.12.1
+- **RSuite (React Suite)**: v5.62.1 for UI components
+- **SASS**: v9.0.0 for styling
+- **React Router**: v6.23.1 for routing
+- **React-Mic**: v12.4.6 for audio messages
+- **Timeago-react**: v3.0.6 for displaying human-readable timestamps
+
+---
+
+## **Developer Tools**
+- **Prettier**: Code formatting
+- **ESLint**: Code linting following Airbnb's JavaScript style guide
+
+For a full list of dependencies and scripts, refer to the `package.json` file.
+
+---
+
+## **Contributors**
+This project was created by voidGlitch. Contributions are welcome!
+```
+
+This is how the chat app description and setup would look with proper markdown and code blocks formatting.
